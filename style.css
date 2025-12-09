@@ -21,6 +21,12 @@ body{
     border: 5px solid black;
 }
 
+.grid-container > div{
+    border: 1px solid black;
+    flex: 1 0 6.25%; /* 100 / 16 = 6.25% of container width per div */
+    height: 6.25%; /* 16 rows → 6.25% each */
+}
+
 .red-border{
     background-color: red;
     display: grid;
