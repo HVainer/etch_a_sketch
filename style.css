@@ -15,25 +15,25 @@ body{
     display: flex;
     flex-wrap: wrap;
     width: 700px;
-    height: 550px;
+    aspect-ratio: 1 / 1; /* grid container will always be square */
     background-color: gray;
-    border-radius: 30px;
+    border-radius: 10px;
     border: 5px solid black;
 }
 
 .grid-container > div{
-    border: 1px solid black;
-    flex: 1 0 6.25%; /* 100 / 16 = 6.25% of container width per div */
-    height: 6.25%; /* 16 rows → 6.25% each */
+    border: 1px solid dimgray;
+    aspect-ratio: 1 / 1; /* each individual grid div will always be square */
+    flex: 0 0 6.25%; /* will always be square */
 }
 
 .red-border{
     background-color: red;
     display: grid;
     place-items: center;
-    height: 740px;
-    width: 870px;
-    padding-bottom: 70px; 
+    height: 950px;
+    width: 950px;
+    padding-bottom: 100px; 
     border-radius: 30px; 
     margin: 20px;
 }
@@ -42,5 +42,18 @@ body{
     color: goldenrod;
     font-family: "Uncial Antiqua", system-ui;
     font-weight: 400;
-    font-size: 50px
+    font-size: 50px;
+   
+}
+
+.top{
+    display: flex;
+    justify-content: space-between;
+    width: 850px;
+}
+
+.top > button{
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
 }
