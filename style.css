@@ -19,12 +19,13 @@ body{
     background-color: gray;
     border-radius: 10px;
     border: 5px solid black;
+    --flex-basis: 6.25%; /* this is my css variable flex-basis because it will change dynamically - has to be defined in the parent for the child to accept it */
 }
 
-.grid-container > div{
+.grid-container > .square-div{ /* will target immediate children */
     border: 1px solid dimgray;
     aspect-ratio: 1 / 1; /* each individual grid div will always be square */
-    flex: 0 0 6.25%; /* will always be square */
+    flex: 0 0 var(--flex-basis); /* 100/# of grid squares per line - ensures equal amount of squares per line - each will be perfectly square */
 }
 
 .red-border{
