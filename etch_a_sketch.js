@@ -9,15 +9,35 @@ for(let i = 0; i < gridSquare * gridSquare; i++)
     gridContainer.appendChild(squareDiv); //append to the container
 }
 
+//setting the css variable on the parent which will set the flex basis on the children
+gridContainer.style.setProperty('--flex-basis', flexBasis);
+
 //////////////////// activate buttons ////////////////////////////
 
+const resizeButton = document.querySelector('#resize-grid');
 
+//add event listener
+resizeButton.addEventListener('click', () => 
+    {
+       let userSize = prompt('Enter the new grid size(between 1-100): ');
+       
+       if(userSize === null) return; //user clicked cancel - prompt() will only return null if user clicks cancel and numb is not parsed
 
+       parseInt(userSize); 
+
+       while (userSize < 1 || userSize > 100 || isNaN(userSize)) //validate number - will keep asking user for number until its valid
+       {
+          alert("Please enter a number between 1 and 100"); 
+          userSize = parseInt(prompt('Enter the new grid size(between 1-100): ')); //let user enter a corrected number
+       }
+
+       changeGridSize(userSize);
+    });
 
 
 //////////////////////////// functions ////////////////////////////
-//setting the css variable on the parent which will set the flex basis on the children
-gridContainer.style.setProperty('--flex-basis', flexBasis);
+
+
 
 function changeGridSize(squareSize)
 {
