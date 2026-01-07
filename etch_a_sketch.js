@@ -40,6 +40,23 @@ clearGrid.addEventListener('click', () =>
             });
     });
 
+    /////////add event listener for rainbow-button
+
+const rainbowButton = document.querySelector('#rainbow-button'); //reference to button
+const onOffText = document.querySelector('.on-off'); //reference to text that will be changed
+let isRainbowButton = false; 
+
+onOffText.textContent = 'OFF'; //default will be off
+
+rainbowButton.addEventListener('click', () =>
+    {
+        isRainbowButton = !isRainbowButton; //when click, it will always be the opposite - toggling  off or on
+
+        onOffText.textContent = isRainbowButton ? 'ON' : 'OFF';
+    });
+
+
+
 //////////////////////////// functions ////////////////////////////
 
 
