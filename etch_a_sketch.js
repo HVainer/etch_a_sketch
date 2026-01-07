@@ -27,9 +27,20 @@ resizeButton.addEventListener('click', () =>
        changeGridSize(userSize);
     });
 
+    /////////add event listener for clear-grid button
+
+const clearGrid = document.querySelector('#clear-grid');
+
+clearGrid.addEventListener('click', () => 
+    {
+        //will cycle thru ea current div and reset the background color **use class because it is a group of divs
+        document.querySelectorAll('.square-div').forEach(square => 
+            {
+                square.style.backgroundColor = '';
+            });
+    });
 
 //////////////////////////// functions ////////////////////////////
-
 
 
 function changeGridSize(squareSize)
