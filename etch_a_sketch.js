@@ -37,6 +37,7 @@ clearGrid.addEventListener('click', () =>
         document.querySelectorAll('.square-div').forEach(square => 
             {
                 square.style.backgroundColor = '';
+                square.style.opacity = '';
             });
     });
 
@@ -76,7 +77,27 @@ function changeGridSize(squareSize)
         //add hovering event listener for each square div
         newSquareDiv.addEventListener('mouseenter', () => 
             {
+                //if rainbow mode is one, each div will have a different color
+                if(isRainbowButton)
+                {    
+                    newSquareDiv.style.backgroundColor = getRandomColor();
+                    newSquareDiv.style.opacity = 1;
+                    return;
+                }
+
+                //square will darken ea time the mouse enters the div
+                //tracks how dark the square is
+                //newSquareDiv.style.opacity returns a string so need to convert to an int
+                //if undefined/empty string is returned then the var will use 0 opacity - handles missing values
+                let currentOpacity = Number(newSquareDiv.style.opacity) || 0;
+
+                //square will be black
                 newSquareDiv.style.backgroundColor = '#000';
+
+                //will gradually increase from 0 to 1
+                //will not exceed 1
+                newSquareDiv.style.opacity = Math.min(currentOpacity + 0.1, 1);
+
             });
 
         gridContainer.appendChild(newSquareDiv);
@@ -84,4 +105,16 @@ function changeGridSize(squareSize)
 
     gridContainer.style.setProperty('--flex-basis', basis);
 
+}
+
+function getRandomColor()
+{
+    //ea rgb value needs to be between 0-255
+    //math.random * 256 will return a number from 0-255.999...
+    //math.floor will round that number down the nearest whole number 
+    //so now we will have a number between 0-255
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;  //returns random color string that will be a valid css color
 }
